@@ -1,0 +1,19 @@
+name: flutter_response_status
+description: A new flutter package to responses in dart .
+version: 1.0.0+1
+author: Danilo Santos <danilocarsan@gmail.com>
+homepage: https://github.com/DaniloCarSan/flutter_response_status
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
