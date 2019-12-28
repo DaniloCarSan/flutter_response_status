@@ -1,9 +1,7 @@
-# flutter_response_status
+import '../lib/flutter_response_status.dart';
+import 'user_model.dart';
+import 'dart:convert' as convert;
 
-A new flutter package to responses in dart .
-
-# Example the use
-````
 class AuthRepositoryExternal{
 
    Future<ResponseStatus<String,UserModel>> signIn(email,password) async {
@@ -59,11 +57,3 @@ main(){
   });
 
 }
-
-````
-
-## Getting Started
-
-For help getting started with Flutter, view 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
