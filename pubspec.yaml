@@ -1,5 +1,5 @@
 name: flutter_response_status
-description: A new flutter package to responses in dart .
+description: Flutter_response_status is a package that to standardize responses in dart.
 version: 1.0.0+1
 author: Danilo Santos <danilocarsan@gmail.com>
 homepage: https://github.com/DaniloCarSan/flutter_response_status
