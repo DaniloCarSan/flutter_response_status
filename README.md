@@ -1,6 +1,6 @@
 # flutter_response_status
 
-A new flutter package to responses in dart .
+Flutter_response_status is a package that to standardize responses in dart.
 
 # Example the use
 ````
