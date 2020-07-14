@@ -1,7 +1,6 @@
-library flutter_response_status;
-
 class ResponseStatusFields {
-  static String status = "status";
+  static String requestStatus= "requestStatus";
+  static String actionStatus = "actionStatus";
   static String message = "message";
   static String code = "code";
   static String data = "data";
@@ -9,34 +8,49 @@ class ResponseStatusFields {
 }
 
 class ResponseStatus<T1, T2> {
-  bool status;
+  bool requestStatus;
+  bool actionStatus;
   String message;
   T1 code;
   T2 data;
   dynamic dataError;
 
-  ResponseStatus(this.status, this.message,
-      {this.code, this.data, this.dataError});
+  ResponseStatus(this.requestStatus,this.actionStatus,this.message,{this.code, this.data, this.dataError});
 
-  ResponseStatus.fromJson(Map<String, dynamic> json)
-      : this.status = json[ResponseStatusFields.status],
-        this.message = json[ResponseStatusFields.message],
-        this.code = json[ResponseStatusFields.code],
-        this.data = json[ResponseStatusFields.data],
-        this.dataError = json[ResponseStatusFields.dataError];
+  ResponseStatus.fromJson(Map<String, dynamic> json): 
+    this.requestStatus = json[ResponseStatusFields.requestStatus],
+    this.actionStatus = json[ResponseStatusFields.actionStatus],
+    this.message = json[ResponseStatusFields.message],
+    this.code = json[ResponseStatusFields.code],
+    this.data = json[ResponseStatusFields.data],
+    this.dataError = json[ResponseStatusFields.dataError];
 
   ResponseStatus<T3, T4> copyWith<T3, T4>({
-    bool status,
+    bool requestStatus,
+    bool actionStatus,
     String message,
     T3 code,
     T4 data,
-  }) =>
-      ResponseStatus<T3, T4>(status ?? this.status, message ?? this.message,
-          code: code ?? this.code, data: data);
+  }) =>ResponseStatus<T3, T4>(
+    requestStatus ?? this.requestStatus,
+    actionStatus ?? this.actionStatus,
+    message ?? this.message,
+    code: code ?? this.code,
+    data: data
+  );
+
+  bool get status => this.requestStatus && this.actionStatus; 
+  bool get statusError => !this.actionStatus && !this.requestStatus; 
+  bool get statusRequest => this.requestStatus && !this.actionStatus; 
+  bool get statusAction => !this.requestStatus && this.actionStatus; 
 
   //Status the response success or falid
-  void setStatus(bool status) {
-    this.status = status;
+  void setRequestStatus(bool requestStatus) {
+    this.requestStatus = requestStatus;
+  }
+
+  void setActionStatus(bool actionStatus) {
+    this.actionStatus = actionStatus;
   }
 
   // Message the response
