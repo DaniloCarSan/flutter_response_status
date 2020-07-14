@@ -1,7 +1,7 @@
 # flutter_response_status
 
 Flutter_response_status is a package that to standardize responses in dart.
-
+ 
 # Example the use
 ````
 class AuthRepositoryExternal{
@@ -12,7 +12,8 @@ class AuthRepositoryExternal{
       //Response structure
       /*
        {
-        status:true,
+        requestStatus:true,
+        actionStatus:true
         message:"Login success",
         code:"LOGIN_SUCCESS",
         data:{userCode:1,userName:'Danilo Santos',userEmail:'danilocarsan@gmail.com'}
@@ -41,7 +42,7 @@ class AuthRepositoryExternal{
     }
     catch (e)
     {
-      return ResponseStatus(false,"No connected the server ",code:"SERVER_ERROR",dataError:e);
+      return ResponseStatus(false,false,"No connected the server ",code:"SERVER_ERROR",dataError:e);
     }
   }
 
@@ -51,6 +52,8 @@ main(){
 
   authRep.signIn('danilocarsan@gmail.com','123456').then((response){
     print(response.status);
+    print(response.requestStatus);
+    print(response.actionStatus);
     print(response.message);
     print(response.code);
     print(response.data);
