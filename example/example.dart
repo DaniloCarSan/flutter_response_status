@@ -1,10 +1,10 @@
 import '../lib/flutter_response_status.dart';
-import 'user_model.dart';
+import 'user_entity.dart';
 import 'dart:convert' as convert;
 
 class AuthRepositoryExternal{
 
-   Future<ResponseStatus<String,UserModel>> signIn(email,password) async {
+   Future<ResponseStatus<String,UserEntity>> signIn(email,password) async {
     try 
     {
       //Response structure
@@ -21,22 +21,22 @@ class AuthRepositoryExternal{
       var dio =  Dio();
       var endpoint = 'auth/sign/in';
       var response = await dio.post(endpoint,data:{
-        UserModelLabels.userEmail:email,
-        UserModelLabels.userPassword:password
+        UserEntityLabels.userEmail:email,
+        UserEntityLabels.userPassword:password
       });
   
       Map<String,dynamic> json = convert.jsonDecode(response.data);
       
       ResponseStatus res = ResponseStatus.fromJson(json);
       
-      var responseUserModel = res.copyWith<String,UserModel>();
+      var responseUserEntity = res.copyWith<String,UserEntity>();
 
       if (res.status)
       {
-        responseUserModel.setData(UserModel.fromJson(res.data));
+        responseUserEntity.setData(UserEntity.fromJson(res.data));
       }
       
-      return responseUserModel;
+      return responseUserEntity;
     }
     catch (e)
     {
@@ -55,7 +55,7 @@ main(){
     print(response.message);
     print(response.code);
     print(response.data);
-    print(response.data.userEmail);
+    print(response.data?.userEmail);
     print(response.dataError);
   });
 

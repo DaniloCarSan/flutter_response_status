@@ -1,4 +1,4 @@
-class UserModelLabels {
+class UserEntityLabels {
   static String userCode = 'USER_CODE';
   static String userEmail = 'USER_EMAIL';
   static String userPassword = 'USER_PASSWORD';
@@ -11,40 +11,40 @@ class UserModelLabels {
 
 }
 
-class UserModel{
+class UserEntity{
 
-  final int userCode;
+  final int? userCode;
   final String userEmail;
-  final String userPassword;
+  final String? userPassword;
 
-  UserModel({
+  UserEntity({
     this.userCode,
-    this.userEmail,
+    required this.userEmail,
     this.userPassword
   });
 
-  UserModel copyWith({
-   int userCode,
-   String userEmail,
-   String userPassword,
-  })=>UserModel(
+  UserEntity copyWith({
+   int? userCode,
+   String? userEmail,
+   String? userPassword,
+  })=>UserEntity(
     userCode: userCode ?? this.userCode,
     userEmail: userEmail ?? this.userEmail,
     userPassword: userPassword ?? this.userPassword
   );
 
-  UserModel.fromJson(Map<String,dynamic>json):
-    this.userCode=json[UserModelLabels.userCode],
-    this.userEmail=json[UserModelLabels.userEmail],
-    this.userPassword=json[UserModelLabels.userPassword]
+  UserEntity.fromJson(Map<String,dynamic>json):
+    userCode=json[UserEntityLabels.userCode],
+    userEmail=json[UserEntityLabels.userEmail],
+    userPassword=json[UserEntityLabels.userPassword]
   ;
 
-  Map<String,dynamic>toJson({List<dynamic> getKeys , List<dynamic>  notKeys }){
+  Map<String,dynamic>toJson({List<dynamic>? getKeys , List<dynamic>?  notKeys }){
 
     Map<String,dynamic> map = {
-      UserModelLabels.userCode:this.userCode,
-      UserModelLabels.userEmail:this.userEmail,
-      UserModelLabels.userPassword:this.userPassword
+      UserEntityLabels.userCode:userCode,
+      UserEntityLabels.userEmail:userEmail,
+      UserEntityLabels.userPassword:userPassword
     };
 
     if(getKeys != null )
@@ -62,9 +62,9 @@ class UserModel{
   
 
   List<dynamic> toList()=>[
-    this.userCode,
-    this.userEmail,
-    this.userPassword
+    userCode,
+    userEmail,
+    userPassword
   ];
 
 }
