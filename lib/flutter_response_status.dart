@@ -68,4 +68,8 @@ class ResponseStatus<T1, T2> {
   void setDataError(dynamic dataError) {
     this.dataError = dataError;
   }
+
+  getData() {
+    return data;
+  }
 }
